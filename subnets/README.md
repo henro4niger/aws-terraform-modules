@@ -17,5 +17,5 @@ This Terraform module creates n-number of AWS subnets depending on the size of m
   }
 }
 ```
-With the above map variables, this module will create two public subnets and three private subnets, all in three availability zones, a, b, or c (can create up to az g!) with a name tag of `moni-production-public-sn-1`, `moni-production-public-sn-2` `moni-production-private-sn-1`, `moni-production-private-sn-2`, and `moni-production-private-sn-3`
+With the above map variables, this module will create two public subnets and three private subnets, all in three availability zones, a, b, or c (can create up to az g!) with a name tag of `production-public-sn-1`, `production-public-sn-2` `production-private-sn-1`, `production-private-sn-2`, and `production-private-sn-3`
 

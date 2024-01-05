@@ -1,7 +1,7 @@
 resource "aws_route_table" "route_table" {
   vpc_id = var.vpc_id
   tags = {
-    Name        = var.route_table_name == "default" ? "moni-${var.env}-route-table-${var.is_public ? "public" : "private"}" : var.route_table_name
+    Name        = var.route_table_name == "default" ? "${var.env}-route-table-${var.is_public ? "public" : "private"}" : var.route_table_name
     Environment = "${var.env}"
   }
 }

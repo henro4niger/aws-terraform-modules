@@ -1,13 +1,4 @@
 data "aws_region" "current_region" {}
-
-# data "aws_ecs_container_definition" "ecs" {
-#   task_definition = aws_ecs_task_definition.task_definition.id
-#   container_name  = local.container_info[0].container_name
-#   depends_on = [
-#     aws_ecs_task_definition.task_definition
-#   ]
-# }
-
 #create default task execution role
 resource "aws_iam_role" "ecs_tasks_execution_role" {
   name               = "staging-${var.service_name}ecs-task-execution-role"
@@ -107,15 +98,10 @@ TASK_DEFINITION
 
   containers = "[${join(",", [for k, v in local.container_info : "${v.container_def}"])}]"
   depends_on = [
-    #data.aws_ecs_container_definition.ecs,
     aws_ecs_task_definition.task_definition
   ]
 }
 
-# resource "local_file" "private_key" {
-#     content  = local.container_image
-#     filename = "private_key.pem"
-# }
 
 resource "aws_ecs_task_definition" "task_definition" {
   family                   = var.service_name
